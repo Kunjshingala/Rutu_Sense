@@ -14,7 +14,6 @@ class WeatherBlocBloc extends Bloc<WeatherBlocEvent, WeatherBlocState> {
       (event, emit) async {
         emit(WeatherBlocLoading());
 
-        // TODO: implement event handler
         try {
           WeatherFactory wf =
               WeatherFactory(API_KEY, language: Language.ENGLISH);
