@@ -15,6 +15,22 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  String greeting() {
+    var time = DateTime.now();
+    var hour = time.hour;
+    print(hour);
+    switch (hour) {
+      case >= 5 && < 12:
+        return "Good Morning";
+      case >= 12 && < 17:
+        return "Good Afternoon";
+      case >= 17 && < 4:
+        return "Good Evening";
+      default:
+        return "hii";
+    }
+  }
+
   Widget getWeatherIcon(int code) {
     switch (code) {
       case >= 200 && < 300:
@@ -34,6 +50,13 @@ class _HomeScreenState extends State<HomeScreen> {
       default:
         return Image.asset('assets/7.png');
     }
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    greeting();
   }
 
   @override
@@ -111,9 +134,9 @@ class _HomeScreenState extends State<HomeScreen> {
                             ),
                           ),
                           const SizedBox(height: 8),
-                          const Text(
-                            'Good Morning',
-                            style: TextStyle(
+                          Text(
+                            greeting(),
+                            style: const TextStyle(
                               color: Colors.white,
                               fontSize: 25,
                               fontWeight: FontWeight.bold,
@@ -282,7 +305,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                       ),
                                       const SizedBox(height: 3),
                                       Text(
-                                        "${state.weather.tempMax!.celsius!.round()} °C",
+                                        "${state.weather.tempMin!.celsius!.round() - 1} °C",
                                         style: const TextStyle(
                                           color: Colors.white,
                                           fontWeight: FontWeight.w700,
