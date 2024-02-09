@@ -10,7 +10,7 @@ part 'weather_bloc_state.dart';
 
 class WeatherBlocBloc extends Bloc<WeatherBlocEvent, WeatherBlocState> {
   WeatherBlocBloc() : super(WeatherBlocInitial()) {
-    on<FetchWeather>(
+    on<FetchWeatherEvent>(
       (event, emit) async {
         emit(WeatherBlocLoading());
 

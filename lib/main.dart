@@ -24,14 +24,15 @@ class MainApp extends StatelessWidget {
         builder: (context, snap) {
           if (snap.hasData) {
             return BlocProvider<WeatherBlocBloc>(
-              create: (context) =>
-                  WeatherBlocBloc()..add(FetchWeather(snap.data as Position)),
+              create: (context) => WeatherBlocBloc()
+                ..add(FetchWeatherEvent(snap.data as Position)),
               child: const HomeScreen(),
             );
           } else {
             return Scaffold(
               body: Center(
                 child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     const CircularProgressIndicator(
                       color: Colors.deepPurple,
